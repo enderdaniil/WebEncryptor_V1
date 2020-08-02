@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EncodeDownload</title>
+</head>
+<body>
+
+    @model IEnumerable<EncryptionWebApplication_V1.Models.FileModel>
+    @{
+        ViewData["Title"] = "Добавление файла";
+    }
+
+    <h3>Выберите файл для загрузки</h3>
+
+    <form asp-action="DownloadEncryptedText" asp-controller="Encrypt" method="get" enctype="multipart/form-data" style="position: center">
+
+        <label>Как назвать файл?:</label><br />
+        <input type="text" name="fileName" /><br /><br />
+        <p>Загрузка будет произведена в папку Downloads!!!</p>
+        <input type="submit" value="Загрузить" />
+    </form>
+
+    <form method="post" asp-action="CreateResponse" asp-controller="Encrypt" enctype="multipart/form-data" style="position: center">
+    
+        <input type="submit" value="Показать результат" />
+
+    </form>
+
+</body>
+</html>

@@ -55,6 +55,14 @@ namespace EncryptionWebApplication_V1
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "encrypt",
+                    pattern: "{controller=Encrypt}/{action=Encode}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "decrypt",
+                    pattern: "{controller=Decrypt}/{action=Decode}/{id?}");
             });
         }
     }

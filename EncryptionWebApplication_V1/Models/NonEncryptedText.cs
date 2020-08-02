@@ -1,4 +1,5 @@
 ﻿using EncryptionWebApplication_V1.Back;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EncryptionWebApplication_V1.Models
 {
-    public static class EncryptedText
+    public static class NonEncryptedText
     {
         public static string Text { get; set; } = "";
 
@@ -15,14 +16,13 @@ namespace EncryptionWebApplication_V1.Models
 
         public static string CurrentFileDirectory { get; set; } = "";
 
-
-        //public static void GetEncrytedText(string text, string password)
+        //public static void GetNonEncrytedText(string text, string password)
         //{
         //    VigenereCipher cipher = new VigenereCipher("АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ");
 
         //    if (text != null && password != null)
         //    {
-        //        var encryptedText = cipher.Encrypt(NonEncryptedText.Text, password.ToUpper());
+        //        var encryptedText = cipher.Decrypt(NonEncryptedText.Text, password.ToUpper());
         //        Text = encryptedText;
         //    }
         //    else if (text == null)
@@ -39,7 +39,7 @@ namespace EncryptionWebApplication_V1.Models
         //    }
         //}
 
-        //public static void DownloadEncryptedText(string path)
+        //public static void DownloadNonEncryptedText(string path)
         //{
         //    using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
         //    {
@@ -55,5 +55,6 @@ namespace EncryptionWebApplication_V1.Models
         //{
         //    public override string Message => "Пароля нет((";
         //}
+
     }
 }

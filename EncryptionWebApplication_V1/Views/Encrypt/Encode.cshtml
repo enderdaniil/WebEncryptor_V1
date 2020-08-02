@@ -16,7 +16,7 @@
         ViewData["Title"] = "Добавление файла";
     }
     <h3>Выберите файл для загрузки</h3>
-    <form asp-action="AddNonEncryptedFile" asp-controller="Encrypt" method="post" enctype="multipart/form-data" style="position: center">
+    <form asp-action="AddEncryptedFile" asp-controller="Encrypt" method="post" enctype="multipart/form-data" style="position: center">
         <input style="font-size: 200%; font-family: monospace; color: #cd66cc" type="file" name="uploadedFile" class="g" /><br>
 
         <label>Ключ:</label><br />
