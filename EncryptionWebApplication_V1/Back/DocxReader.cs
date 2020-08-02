@@ -14,7 +14,7 @@ namespace EncryptionWebApplication_V1.Back
     {
         public static string Read(string path)
         {
-            return OpenWordprocessingDocumentReadonly("path");
+            return OpenWordprocessingDocumentReadonly(path);
         }
 
         private static string OpenWordprocessingDocumentReadonly(string filepath)
