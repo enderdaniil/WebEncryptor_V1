@@ -42,7 +42,6 @@ namespace EncryptionWebApplication_V1.Controllers
                 EncryptedText.CurrentFilePath = path;
                 EncryptedText.CurrentFileDirectory = Directory.GetCurrentDirectory();
 
-                // сохраняем файл в папку Files в каталоге wwwroot
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
                     uploadedFile.CopyToAsync(fileStream);
@@ -103,7 +102,6 @@ namespace EncryptionWebApplication_V1.Controllers
                 NonEncryptedText.CurrentFilePath = path;
                 NonEncryptedText.CurrentFileDirectory = Directory.GetCurrentDirectory();
 
-                // сохраняем файл в папку Files в каталоге wwwroot
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
                     uploadedFile.CopyToAsync(fileStream);
@@ -153,7 +151,7 @@ namespace EncryptionWebApplication_V1.Controllers
             return View("EncodeDownload");
         }
 
-        private void GetEncrytedText(string text, string password)
+        public void GetEncrytedText(string text, string password)
         {
             VigenereCipher cipher = new VigenereCipher("АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ");
 
@@ -179,6 +177,11 @@ namespace EncryptionWebApplication_V1.Controllers
         [HttpGet]
         public FileResult DownloadEncryptedText(string fileName)
         {
+            if (fileName == null || fileName == "")
+            {
+                Response.WriteAsync("<script>alert('You have not entered file name!!! Go to the previous page and enter!!!');</script>");
+            }
+
             GetEncrytedText(NonEncryptedText.Text, Key.Text);
 
             string resultFileDirectory = NonEncryptedText.CurrentFileDirectory;

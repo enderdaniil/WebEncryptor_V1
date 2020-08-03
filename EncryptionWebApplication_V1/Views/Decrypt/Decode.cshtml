@@ -11,5 +11,22 @@
     <title>Decode</title>
 </head>
 <body>
+
+    @model IEnumerable<EncryptionWebApplication_V1.Models.FileModel>
+    @{
+        ViewData["Title"] = "Добавление файла";
+    }
+    <h3>Выберите файл для загрузки</h3>
+    <form asp-action="AddEncryptedFile" asp-controller="Decrypt" method="post" enctype="multipart/form-data" style="position: center">
+        <input style="font-size: 200%; font-family: monospace; color: #cd66cc" type="file" name="uploadedFile" class="g" /><br>
+
+        <label>Ключ:</label><br />
+        <input type="text" name="key" /><br /><br />
+
+        <input type="submit" value="Загрузить" />
+    </form>
+
+    <a href="/Home/Index">Вернуться обратно</a>
+
 </body>
 </html>

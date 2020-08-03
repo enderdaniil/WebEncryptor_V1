@@ -44,7 +44,7 @@ namespace EncryptionWebApplication_V1.Back
             return p;
         }
 
-        private string Vigenere(string text, string password, bool encrypting = true)
+        public string Vigenere(string text, string password, bool encrypting = true)
         {
             Input(text);
             //var gamma = GetRepeatKey(password, text.Length);
