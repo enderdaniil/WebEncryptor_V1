@@ -186,7 +186,7 @@ namespace EncryptionWebApplication_V1.Controllers
 
             string resultFileDirectory = NonEncryptedText.CurrentFileDirectory;
 
-            string path = Path.Combine(resultFileDirectory, fileName + ".docx");
+            string path = Path.Combine(resultFileDirectory, fileName + ".txt");
 
             using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
             {
@@ -197,7 +197,28 @@ namespace EncryptionWebApplication_V1.Controllers
 
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
 
+        [HttpGet]
+        public FileResult DownloadEncryptedTextDOCX(string fileName)
+        {
+            if (fileName == null || fileName == "")
+            {
+                Response.WriteAsync("<script>alert('You have not entered file name!!! Go to the previous page and enter!!!');</script>");
+            }
+
+            GetEncrytedText(NonEncryptedText.Text, Key.Text);
+
+            string resultFileDirectory = NonEncryptedText.CurrentFileDirectory;
+
+            string path = Path.Combine(resultFileDirectory, fileName + ".docx");
+
+            DocxCreater.CreateWordDocument(path, EncryptedText.Text);
+
+            fileName += ".docx";
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
         [HttpPost]

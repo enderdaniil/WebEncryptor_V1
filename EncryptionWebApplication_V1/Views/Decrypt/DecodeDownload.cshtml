@@ -16,9 +16,16 @@
     @{
         ViewData["Title"] = "Добавление файла";
     }
-    <h3 style="font-size: 200%; font-family: monospace; color: #cd66cc">Выберите файл для загрузки</h3>
 
-    <form asp-action="DownloadNonEncryptedText" asp-controller="Decrypt" method="get" enctype="multipart/form-data" style="position: center">
+    <h3 style="font-size: 400%; font-family: monospace; color: #cd66cc; position: relative; left: 200px">Выберите имя файла для загрузки и тип загружаемого файла!</h3>
+
+
+
+
+
+    <h4 style="font-size: 400%; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: chartreuse; position: relative; left: 400px">Скачать txt файл</h4>
+
+    <form asp-action="DownloadNonEncryptedText" asp-controller="Decrypt" method="get" enctype="multipart/form-data" style="font-size: 200%; font-family: monospace; color: #cd66cc">
 
         <label style="fill: azure; position: relative; left: 100px; font-size: 150%">Как назвать файл?:</label><br />
 
@@ -26,19 +33,61 @@
 
         <p style="fill: azure; position: relative; left: 100px; font-size: 150%">Загрузка будет произведена в папку Downloads!!!</p>
 
-        <input type="submit" value="Загрузить" style="font-size: 200%; position: relative; left: 100px; color: darkgreen" />
+        <input type="submit" value="Загрузить txt" style="font-size: 200%; position: relative; left: 100px; color: darkgreen" />
 
     </form>
 
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <hr style="background-color: saddlebrown; border: none; height: 70px">
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+
+    <h4 style="font-size: 400%; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: chartreuse; position: relative; left: 400px">Скачать docx файл</h4>
+
+    <form asp-action="DownloadEncryptedTextDOCX" asp-controller="Decrypt" method="get" enctype="multipart/form-data" style="font-size: 200%; font-family: monospace; color: #cd66cc">
+
+        <label style="fill: azure; position: relative; left: 100px; font-size: 150%">Как назвать файл?:</label><br />
+
+        <input type="text" name="fileName" style="fill: azure; position: relative; left: 100px; font-size: 150%" /><br /><br />
+
+        <p style="fill: azure; position: relative; left: 100px; font-size: 150%">Загрузка будет произведена в папку Downloads!!!</p>
+
+        <input style="font-size: 200%; position: relative; left: 100px; color: darkgreen" type="submit" value="Загрузить docx" />
+
+    </form>
+
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <hr style="background-color: saddlebrown; border: none; height: 70px">
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+
+
+    <br /><br />
     <form class="btn-block" method="post" asp-action="CreateResponse" asp-controller="Decrypt" enctype="multipart/form-data" style="position: center">
 
         <input type="submit" value="Показать результат" style="font-size: 200%; position: relative; left: 100px; color: darkgreen" />
 
     </form>
 
-    <a href="/Home/Decode">Вернуться к выбору файла и ключа</a><br /><br />
 
-    <a href="/Home/Index">Вернуться на главную</a>
+
+
+    <br /><br /><br /><br />
+    <a style="font-size: 300%" href="/Home/Decode">Вернуться к выбору файла и ключа</a><br /><br />
+
+    <a style="font-size: 300%" href="/Home/Index">Вернуться на главную</a>
+
+
 
     <div style="position: relative; left: 500px; font-size: 700%">(^=◕ᴥ◕=^)</div>
     <div style="position: relative; left: 500px; font-size: 700%">(^=◕ᴥ◕=^)</div>
