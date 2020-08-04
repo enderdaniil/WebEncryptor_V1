@@ -34,7 +34,7 @@ namespace EncryptionWebApplication_V1.XUnitTests_V2
             EncryptController decryptController = new EncryptController();
 
             // Act
-            decryptController.GetEncrytedText(nonEncryptedText, key);
+            decryptController.GetText(nonEncryptedText, key);
 
             // Assert
             Assert.Equal("ыърчбфэ".ToUpper(), EncryptedText.Text);
@@ -48,7 +48,7 @@ namespace EncryptionWebApplication_V1.XUnitTests_V2
             EncryptController decryptController = new EncryptController();
 
             // Act
-            FileResult result = decryptController.DownloadEncryptedText(fileName);
+            FileResult result = decryptController.DownloadText(fileName);
 
 
             // Assert

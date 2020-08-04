@@ -37,7 +37,7 @@ namespace EncryptionWebApplication_V1.XUnitTests_V2
             DecryptController decryptController = new DecryptController();
 
             // Act
-            decryptController.GetNonEncrytedText(encryptedText, key);
+            decryptController.GetText(encryptedText, key);
 
 
             // Assert

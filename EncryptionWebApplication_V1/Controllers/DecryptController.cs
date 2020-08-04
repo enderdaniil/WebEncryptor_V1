@@ -4,16 +4,18 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using EncryptionWebApplication_V1.Back;
+using EncryptionWebApplication_V1.Interfaces;
 using EncryptionWebApplication_V1.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EncryptionWebApplication_V1.Controllers
 {
-    public class DecryptController : Controller
+    public class DecryptController : Controller, IControllerable
     {
         static DecryptController() { }
 
+        [HttpPost]
         public IActionResult Index()
         {
             return View();
@@ -139,7 +141,7 @@ namespace EncryptionWebApplication_V1.Controllers
             return View("DecodeDownload");
         }
 
-        public void GetNonEncrytedText(string text, string password)
+        public void GetText(string text, string password)
         {
             VigenereCipher cipher = new VigenereCipher("АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ");
 
@@ -163,14 +165,14 @@ namespace EncryptionWebApplication_V1.Controllers
         }
 
         [HttpGet]
-        public FileResult DownloadNonEncryptedText(string fileName)
+        public FileResult DownloadText(string fileName)
         {
             if (fileName == null || fileName == "")
             {
                 Response.WriteAsync("<script>alert('You have not entered file name!!! Go to the previous page and enter!!!');</script>");
             }
 
-            GetNonEncrytedText(EncryptedText.Text, Key.Text);
+            GetText(EncryptedText.Text, Key.Text);
 
             string resultFileDirectory = NonEncryptedText.CurrentFileDirectory;
 
@@ -188,14 +190,14 @@ namespace EncryptionWebApplication_V1.Controllers
         }
 
         [HttpGet]
-        public FileResult DownloadEncryptedTextDOCX(string fileName)
+        public FileResult DownloadTextDOCX(string fileName)
         {
             if (fileName == null || fileName == "")
             {
                 Response.WriteAsync("<script>alert('You have not entered file name!!! Go to the previous page and enter!!!');</script>");
             }
 
-            GetNonEncrytedText(EncryptedText.Text, Key.Text);
+            GetText(EncryptedText.Text, Key.Text);
 
             string resultFileDirectory = NonEncryptedText.CurrentFileDirectory;
 
@@ -211,7 +213,7 @@ namespace EncryptionWebApplication_V1.Controllers
 
         public IActionResult CreateResponse()
         {
-            GetNonEncrytedText(EncryptedText.Text, Key.Text);
+            GetText(EncryptedText.Text, Key.Text);
 
             return Content(NonEncryptedText.Text);
         }
